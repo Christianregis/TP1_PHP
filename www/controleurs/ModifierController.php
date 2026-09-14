@@ -18,8 +18,27 @@ class ModifierController
          * header('Location: ../vues/liste.php');
          * exit;
          */
+
+        if (empty($_POST)) {
+            echo "Le formulaire n'est pas totalement rempli !";
+            exit;
+        }
+        $id = $_POST['id'];
+        $nom = $_POST['nom'];
+        $description = $_POST['description'];
+        $prix = $_POST['prix'];
+        $stock = $_POST['stock'];
+        $categorie_id = $_POST['categorie_id'];
+
+        $produit = new Produit($id, $nom, $description, $prix, $stock, $categorie_id);
+
+        if ($produit->modifier($pdo)) {
+            header('Location: ../vues/confirmation-modification.php');
+        }
     }
 }
 
 // TODO étudiant :
 // créer le contrôleur puis appeler modifier(...)
+$controller = new ModifierController();
+$controller->modifier($pdo);

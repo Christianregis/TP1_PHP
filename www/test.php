@@ -24,11 +24,21 @@ try {
 }
 
 // Test de la classe Produit
-$produit = new Produit('paul', 'Good', 0.0, 2, 1);
+$produit = new Produit(29, 'paul', 'Good', 0.0, 2, 1);
 echo "<h1>Ancien Stock : ".$produit->getStock()."</h1>";
+
 // Modification du stock
 $produit->setStock(12);
 echo "<h1>Nouveau Stock : ".$produit->getStock()."</h1>";
 
 // Ajout du produit dans la base de données
 echo "".$produit->ajouter($pdo)."";
+
+// Modification du stock
+$produit->setStock(10);
+
+// Modification du produit courant
+if($produit->modifier($pdo)){
+    echo "<h1>Nouveau Stock : ".$produit->getStock()."</h1>";
+}
+

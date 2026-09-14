@@ -21,7 +21,7 @@ class AjouterController
          * exit;
          */
 
-        if(empty($_POST)) {
+        if (empty($_POST)) {
             // Le formulaire n'a pas été soumis, on peut afficher un message d'erreur ou rediriger vers le formulaire
             echo "Le formulaire n'a pas été soumis.";
             exit;
@@ -32,13 +32,16 @@ class AjouterController
         $stock = $_POST['stock'];
         $categorie_id = $_POST['categorie_id'];
 
-        $produit = new Produit($nom, $description, $prix, $stock, $categorie_id);
-        $produit->ajouter($pdo);
+        $produit = new Produit(29, $nom, $description, $prix, $stock, $categorie_id);
 
-        // Redirection vers la vue de confirmation
-        header('Location: ../vues/confirmation-ajout.php');
-        exit;
 
+        if ($produit->ajouter($pdo)) {
+            $produit->ajouter($pdo);
+
+            // Redirection vers la vue de confirmation
+            header('Location: ../vues/confirmation-ajout.php');
+            exit;
+        }
     }
 }
 
