@@ -123,6 +123,10 @@ class Produit
     public function supprimer(PDO $pdo): bool
     {
         // À compléter
+        $stmt = $pdo->prepare('DELETE FROM produits WHERE id = ?');
+        $stmt->bindValue(1, $this->id);
+        $stmt->execute();
+        return $stmt->execute();
     }
 
 

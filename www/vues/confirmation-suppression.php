@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Modification réussi</title>
+    <title>Suppression réussie</title>
 </head>
 <body>
 
-    <h1>Le nain a bien ete modofier dans la base Nainternet !</h1>
+    <h1>Le nain a bien ete supprime dans la base Nainternet !</h1>
 
     <a href="liste.php">Retour à la liste des produits.</a>
 

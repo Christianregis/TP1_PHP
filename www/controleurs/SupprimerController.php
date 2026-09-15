@@ -18,8 +18,21 @@ class SupprimerController
          * header('Location: ../vues/liste.php');
          * exit;
          */
+
+        if (empty($_POST)) {
+            echo "Le formulaire n'est pas totalement rempli !";
+            exit;
+        }
+        $id = $_POST['id'];
+        $produit = new Produit($id, '', '', 0.0, 0, 0);
+        if ($produit->supprimer($pdo)) {
+            header('Location: ../vues/confirmation-suppression.php');
+            exit;
+        }
     }
 }
 
 // TODO étudiant :
 // créer le contrôleur puis appeler supprimer(...)
+$controller = new SupprimerController();
+$controller->supprimer($pdo);

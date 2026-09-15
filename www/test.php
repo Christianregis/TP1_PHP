@@ -42,3 +42,8 @@ if($produit->modifier($pdo)){
     echo "<h1>Nouveau Stock : ".$produit->getStock()."</h1>";
 }
 
+// Suppression du produit courant
+if($produit->supprimer($pdo)){
+    echo "<h1>Produit supprimé avec succès !</h1>";
+}
+
