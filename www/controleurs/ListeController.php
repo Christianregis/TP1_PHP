@@ -10,8 +10,8 @@ class ListeController
         // TODO étudiant :
         // appeler la méthode statique Produits::lister(...)
         // puis retourner le tableau obtenu
-
-        return [];
+        $produits = Produit::lister($pdo);
+        return $produits;
     }
 }
 

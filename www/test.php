@@ -47,3 +47,5 @@ if($produit->supprimer($pdo)){
     echo "<h1>Produit supprimé avec succès !</h1>";
 }
 
+var_dump(Produit::lister($pdo));
+
