@@ -24,7 +24,7 @@ try {
 }
 
 // Test de la classe Produit
-$produit = new Produit(29, 'paul', 'Good', 0.0, 2, 1);
+$produit = new Produit(null, 'paul', 'Good', 0.0, 2, 1);
 echo "<h1>Ancien Stock : ".$produit->getStock()."</h1>";
 
 // Modification du stock

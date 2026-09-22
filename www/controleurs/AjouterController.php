@@ -32,12 +32,10 @@ class AjouterController
         $stock = $_POST['stock'];
         $categorie_id = $_POST['categorie_id'];
 
-        $produit = new Produit(29, $nom, $description, $prix, $stock, $categorie_id);
+        $produit = new Produit(null, $nom, $description, $prix, $stock, $categorie_id);
 
 
         if ($produit->ajouter($pdo)) {
-            $produit->ajouter($pdo);
-
             // Redirection vers la vue de confirmation
             header('Location: ../vues/confirmation-ajout.php');
             exit;

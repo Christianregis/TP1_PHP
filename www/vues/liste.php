@@ -31,12 +31,14 @@ $produits = $controleur->lister($pdo);
         <table>
             <thead>
                 <tr>
+                    <!-- <th>Image</th> -->
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Description</th>
                     <th>Prix</th>
                     <th>Stock</th>
                     <th>Catégorie</th>
+                    <!-- <th>Action</th> -->
                 </tr>
             </thead>
 
@@ -48,12 +50,14 @@ $produits = $controleur->lister($pdo);
                 // et générer une ligne <tr> par produit
                 foreach ($produits as $produit) {
                     echo "<tr>";
+                    // echo "<td><img src='" . $produit['image'] . "' alt='" . $produit['nom'] . "'></td>";
                     echo "<td>" . $produit['id'] . "</td>";
                     echo "<td>" . $produit['nom'] . "</td>";
                     echo "<td>" . $produit['description'] . "</td>";
                     echo "<td>" . $produit['prix'] . " €</td>";
                     echo "<td>" . $produit['stock'] . "</td>";
                     echo "<td>" . $produit['categorie_id'] . "</td>";
+                    // echo "<td><a href='/vues/modifier.php/?id=".$produit['id']."'>Modifier</a></td>";
                     echo "</tr>";
                 }
                 ?>

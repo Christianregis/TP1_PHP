@@ -25,9 +25,8 @@ class Produit
     private int $categorieId;
 
 
-    public function __construct(int $id, string $nom, string $description, float $prix, int $stock, int $categorieId)
-    {
-        $this->id  = $id;
+    public function __construct(int|null $id, string $nom, string $description, float $prix, int $stock, int $categorieId)
+    {   $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->prix = $prix;
@@ -74,13 +73,12 @@ class Produit
     public function ajouter(PDO $pdo): bool
     {
         // À compléter
-            $stmt = $pdo->prepare('INSERT INTO produits(id, nom, description, prix, stock, categorie_id) VALUES(?, ?, ?, ?, ?, ?)');
-            $stmt->bindValue(1, $this->id);
-            $stmt->bindValue(2, $this->nom);
-            $stmt->bindValue(3, $this->description);
-            $stmt->bindValue(4, $this->prix);
-            $stmt->bindValue(5, $this->stock);
-            $stmt->bindValue(6, $this->categorieId);
+            $stmt = $pdo->prepare('INSERT INTO produits(nom, description, prix, stock, categorie_id) VALUES(?, ?, ?, ?, ?)');
+            $stmt->bindValue(1, $this->nom);
+            $stmt->bindValue(2, $this->description);
+            $stmt->bindValue(3, $this->prix);
+            $stmt->bindValue(4, $this->stock);
+            $stmt->bindValue(5, $this->categorieId);
 
             return $stmt->execute();
     }
