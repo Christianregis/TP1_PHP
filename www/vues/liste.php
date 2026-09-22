@@ -38,6 +38,7 @@ $produits = $controleur->lister($pdo);
                     <th>Prix</th>
                     <th>Stock</th>
                     <th>Catégorie</th>
+                    <th>Supprimer</th>
                     <!-- <th>Action</th> -->
                 </tr>
             </thead>
@@ -57,6 +58,7 @@ $produits = $controleur->lister($pdo);
                     echo "<td>" . $produit['prix'] . " €</td>";
                     echo "<td>" . $produit['stock'] . "</td>";
                     echo "<td>" . $produit['categorie_id'] . "</td>";
+                    echo "<td><a href='../controleurs/SupprimerController.php?id=".$produit['id']."''>Supprimer</a></td>";
                     // echo "<td><a href='/vues/modifier.php/?id=".$produit['id']."'>Modifier</a></td>";
                     echo "</tr>";
                 }

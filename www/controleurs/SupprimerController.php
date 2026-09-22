@@ -19,11 +19,11 @@ class SupprimerController
          * exit;
          */
 
-        if (empty($_POST)) {
+        if (empty($_GET)) {
             echo "Le formulaire n'est pas totalement rempli !";
             exit;
         }
-        $id = $_POST['id'];
+        $id = $_GET['id'];
         $produit = new Produit($id, '', '', 0.0, 0, 0);
         if ($produit->supprimer($pdo)) {
             header('Location: ../vues/confirmation-suppression.php');

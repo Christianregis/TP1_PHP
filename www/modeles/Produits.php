@@ -17,7 +17,7 @@ class Produit
      *
      * - écrire les getters et setters nécessaires
      */
-    private int $id;
+    private int|null $id;
     private string $nom;
     private string $description;
     private float $prix;
@@ -25,8 +25,9 @@ class Produit
     private int $categorieId;
 
 
-    public function __construct(int|null $id, string $nom, string $description, float $prix, int $stock, int $categorieId)
-    {   $this->id = $id;
+    public function __construct(int $id = null, string $nom, string $description, float $prix, int $stock, int $categorieId)
+    {
+        $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->prix = $prix;
@@ -34,7 +35,7 @@ class Produit
         $this->categorieId = $categorieId;
     }
 
-    public function getNom()
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -43,7 +44,7 @@ class Produit
         $this->nom = $nom;
     }
 
-    public function getPrix()
+    public function getPrix(): float
     {
         return $this->prix;
     }
@@ -52,7 +53,7 @@ class Produit
         $this->prix = $prix;
     }
 
-    public function getStock()
+    public function getStock(): int
     {
         return $this->stock;
     }
@@ -73,14 +74,14 @@ class Produit
     public function ajouter(PDO $pdo): bool
     {
         // À compléter
-            $stmt = $pdo->prepare('INSERT INTO produits(nom, description, prix, stock, categorie_id) VALUES(?, ?, ?, ?, ?)');
-            $stmt->bindValue(1, $this->nom);
-            $stmt->bindValue(2, $this->description);
-            $stmt->bindValue(3, $this->prix);
-            $stmt->bindValue(4, $this->stock);
-            $stmt->bindValue(5, $this->categorieId);
+        $stmt = $pdo->prepare('INSERT INTO produits(nom, description, prix, stock, categorie_id) VALUES(?, ?, ?, ?, ?)');
+        $stmt->bindValue(1, $this->nom);
+        $stmt->bindValue(2, $this->description);
+        $stmt->bindValue(3, $this->prix);
+        $stmt->bindValue(4, $this->stock);
+        $stmt->bindValue(5, $this->categorieId);
 
-            return $stmt->execute();
+        return $stmt->execute();
     }
 
 
